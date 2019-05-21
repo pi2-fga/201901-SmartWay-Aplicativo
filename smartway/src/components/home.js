@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import iconMap from '../assets/images/map.png';
+import iconQRCode from '../assets/images/qrleitor.png';
+import iconFavorite from '../assets/images/fav.png';
+import iconBattery from '../assets/images/bateria.png'
 
 export default class Home extends Component { 
     static navigationOptions = {
@@ -10,9 +14,29 @@ export default class Home extends Component {
         const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={styles.qrCodeButton} onPress={() => navigate('QRCode')}>
-                    <Text style={styles.qrCodeButtonText}>QR Code</Text>
-                </TouchableOpacity>
+                <View style={styles.containerIcon}>
+                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou no mapa! :D")}>
+                        <Image source={iconMap} style={styles.image} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.containerIcon}>
+                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou em favoritos! :D")}>
+                        <Image source={iconFavorite} style={styles.image} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.containerIcon}>
+                    <TouchableOpacity style={styles.icon} onPress={() => navigate('QRCode')}>
+                        <Image source={iconQRCode} style={styles.image} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.containerIcon}>
+                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou na bateria! :D")}>
+                        <Image source={iconBattery} style={styles.image} />
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }            
@@ -21,26 +45,28 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        padding: 20
+        flexDirection: 'column', 
+        backgroundColor: '#fff',        
+    },
+
+    containerIcon: {
+        // flex: 1,
+        // backgroundColor: 'transparent',
+        // padding: 20
         
     },
 
-    qrCodeButton: {
-        height: 42,
-        borderRadius: 5,
-        borderWidth: 2,
-        borderColor: "#DA552F",
+    icon: {
         backgroundColor: "transparent",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 10
+        marginTop: 10,
+        padding: 10,
     },
 
-    qrCodeButtonText: {
-        fontSize: 16,
-        color: "#DA552F",
-        fontWeight: "bold"
+    image: {
+        width: 90, 
+        height: 90,
     },
 
 
