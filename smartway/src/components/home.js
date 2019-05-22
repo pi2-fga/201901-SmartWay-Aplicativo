@@ -21,7 +21,7 @@ export default class Home extends Component {
                 </View>
 
                 <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou em favoritos! :D")}>
+                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Favorites')}>
                         <Image source={iconFavorite} style={styles.image} />
                     </TouchableOpacity>
                 </View>
