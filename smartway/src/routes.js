@@ -3,7 +3,8 @@ import {createStackNavigator, createAppContainer, createSwitchNavigator}  from '
 
 import Home from './components/home';
 import QRCode from './components/qrcode/QRCode';
-import Favorites from './components/favorites/Favorites'
+import Favorites from './components/favorites/Favorites';
+import Map from './components/map/Map';
 
 const RoutesNavigation = createStackNavigator({
     Home: {
@@ -15,6 +16,10 @@ const RoutesNavigation = createStackNavigator({
 
     Favorites: {
         screen: Favorites
+    },
+
+    Map: {
+        screen: Map
     }
 
 });
