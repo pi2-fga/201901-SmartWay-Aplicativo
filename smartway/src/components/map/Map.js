@@ -17,11 +17,7 @@ export default class Map extends Component {
       PermissionsAndroid.requestMultiple(
                   [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                   PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION],
-                  {
-                  title: 'Give Location Permission',
-                  message: 'Permitir que o SmartwayApp acesse o local do dispositivosssss?'
-              }
-          ).then(granted => {
+                ).then(granted => {
               
               navigator.geolocation.getCurrentPosition(
                 position => {
@@ -38,20 +34,6 @@ export default class Map extends Component {
               reject(err);
           });
       }
-
-    renderAnnotations() {
-        return (
-          <MapboxGL.PointAnnotation
-            id='rocketseat'
-            coordinate={[-49.6446024, -27.2108001]}
-          >
-            <View style={styles.annotationContainer}>
-              <View style={styles.annotationFill} />
-            </View>
-            <MapboxGL.Callout title='Rocketseat House' />
-          </MapboxGL.PointAnnotation>
-        )
-      }
    
     
       render() {
@@ -63,7 +45,6 @@ export default class Map extends Component {
             showUserLocation={true}
             styleURL={MapboxGL.StyleURL.Dark}
           >
-            {this.renderAnnotations()}
           </MapboxGL.MapView>
         );
       }
