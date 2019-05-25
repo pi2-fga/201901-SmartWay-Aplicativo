@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import iconMap from '../assets/images/map.png';
 import iconQRCode from '../assets/images/qrleitor.png';
 import iconFavorite from '../assets/images/fav.png';
-import iconBattery from '../assets/images/bateria.png'
+import iconBattery from '../assets/images/bateria.png';
+import iconCrosswalk from '../assets/images/crosswalk.png';
 
 export default class Home extends Component { 
     static navigationOptions = {
@@ -13,7 +14,7 @@ export default class Home extends Component {
     render() {
         const {navigate} = this.props.navigation;
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.containerIcon}>
                     <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou no mapa! :D")}>
                         <Image source={iconMap} style={styles.image} />
@@ -33,11 +34,17 @@ export default class Home extends Component {
                 </View>
 
                 <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Crosswalk')}>
+                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou em bateria! :D")}>
                         <Image source={iconBattery} style={styles.image} />
                     </TouchableOpacity>
                 </View>
-            </View>
+
+                <View style={styles.containerIcon}>
+                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Crosswalk')}>
+                        <Image source={iconCrosswalk} style={styles.image} />
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         );
     }            
 }

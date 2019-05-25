@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
+import { feedback } from '../../shared/utils';
 import { crosswalkDetectionAPI } from './api';
 import { loadingAlert } from '../../shared/alerts';
 
@@ -36,16 +37,25 @@ class CrosswalkDetector extends Component {
 
     crosswalkDetectionAPI(img)
       .then(response => this.detectedFeedback(response.data))
-      .catch(error => console.warn(error))
+      .catch(error => this.failConnection(error))
   }
 
   detectedFeedback(data) {
     const { navigate } = this.props.navigation;
-    console.warn(data.result)
     console.warn(data.message);
+    if (data.result) {
+      feedback('crosswalk.mp3');
+    } else {
+      feedback('not_crosswalk.mp3');
+    }
     this.setState({ showAlert: false });
     navigate('Home')
+  }
 
+  failConnection(error) {
+    console.log(error);
+    feedback('error.mp3');
+    this.setState({ showAlert: false })
   }
 
   render() {
