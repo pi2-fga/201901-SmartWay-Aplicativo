@@ -3,14 +3,12 @@ import {createStackNavigator, createAppContainer, createSwitchNavigator}  from '
 
 import Home from './components/home';
 import QRCode from './components/qrcode/QRCode'
+import CrosswalkDetection from './components/crosswalk/CrosswalkDetector';
 
 const RoutesNavigation = createStackNavigator({
-    Home: {
-        screen: Home
-    },
-    QRCode: {
-        screen: QRCode
-    }
+    Home: Home,
+    QRCode: QRCode,
+    Crosswalk: CrosswalkDetection
 });
 
 export default class Routes extends Component {
