@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {createStackNavigator, createAppContainer, createSwitchNavigator}  from 'react-navigation';
+import {createStackNavigator}  from 'react-navigation';
 
 import Home from './components/home';
 import QRCode from './components/qrcode/QRCode'
