@@ -34,7 +34,7 @@ export default class Home extends Component {
                 </View>
 
                 <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou em bateria! :D")}>
+                    <TouchableOpacity style={styles.icon} onPress={() => navigate('BusLine')}>
                         <Image source={iconBattery} style={styles.image} />
                     </TouchableOpacity>
                 </View>
