@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@mapbox/react-native-mapbox-gl": "https://github.com/nitaliano/react-native-mapbox-gl/tarball/master",
-    "amqplib": "^0.5.3",
     "axios": "^0.18.0",
     "react": "16.8.3",
     "react-native": "0.59.5",
@@ -16,7 +15,6 @@
     "react-native-camera": "^2.9.0",
     "react-native-navigation": "^2.18.5",
     "react-native-qrcode-scanner": "^1.2.1",
-    "react-native-rabbitmq": "^0.6.3",
     "react-native-sound": "^0.10.12",
     "react-navigation": "2.18.3"
   },

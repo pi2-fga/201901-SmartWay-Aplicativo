@@ -43,7 +43,6 @@
 		30D39601CEB9421CB5BB77E7 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A42D695240E4897AE3C7B8B /* libRNSound.a */; };
 		A229967656AA4A35BAB07776 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D77FF77D5FB1485B92751249 /* libReactNativeNavigation.a */; };
 		7FC1DFFB63104FF5A3A327C5 /* ReactNativeNavigationTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 895A5EA5A39C44C68992D0CA /* ReactNativeNavigationTests.xctest */; };
-		6900BEDF371342FA95079B32 /* libRCTReactNativeRabbitMq.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A75903DAAE3443B5B4BC7DCB /* libRCTReactNativeRabbitMq.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,8 +357,6 @@
 		A04A1EECDE0B4619B8188F43 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeNavigation.xcodeproj"; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		D77FF77D5FB1485B92751249 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		895A5EA5A39C44C68992D0CA /* ReactNativeNavigationTests.xctest */ = {isa = PBXFileReference; name = "ReactNativeNavigationTests.xctest"; path = "ReactNativeNavigationTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
-		907EB5841DA54563850FC90D /* RCTReactNativeRabbitMq.xcodeproj */ = {isa = PBXFileReference; name = "RCTReactNativeRabbitMq.xcodeproj"; path = "../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		A75903DAAE3443B5B4BC7DCB /* libRCTReactNativeRabbitMq.a */ = {isa = PBXFileReference; name = "libRCTReactNativeRabbitMq.a"; path = "libRCTReactNativeRabbitMq.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,7 +389,6 @@
 				30D39601CEB9421CB5BB77E7 /* libRNSound.a in Frameworks */,
 				A229967656AA4A35BAB07776 /* libReactNativeNavigation.a in Frameworks */,
 				7FC1DFFB63104FF5A3A327C5 /* ReactNativeNavigationTests.xctest in Resources */,
-				6900BEDF371342FA95079B32 /* libRCTReactNativeRabbitMq.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +581,6 @@
 				316A709F249545799E94F23C /* RNCamera.xcodeproj */,
 				0A2AC57E4C8C4A0E9DD46797 /* RNSound.xcodeproj */,
 				A04A1EECDE0B4619B8188F43 /* ReactNativeNavigation.xcodeproj */,
-				907EB5841DA54563850FC90D /* RCTReactNativeRabbitMq.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1224,7 +1219,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Debug;
@@ -1257,7 +1251,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Release;
@@ -1283,7 +1276,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Debug;
@@ -1308,7 +1300,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Release;
@@ -1349,7 +1340,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Debug;
@@ -1390,7 +1380,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Release;
@@ -1430,7 +1419,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Debug;
@@ -1470,7 +1458,6 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
-					"$(SRCROOT)/../node_modules/react-native-rabbitmq/ios/RCTReactNativeRabbitMq",
 				);
 			};
 			name = Release;

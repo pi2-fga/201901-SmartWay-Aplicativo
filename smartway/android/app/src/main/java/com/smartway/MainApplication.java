@@ -3,7 +3,6 @@ package com.smartway;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import nl.kega.reactnativerabbitmq.ReactNativeRabbitMqPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.facebook.react.ReactNativeHost;
@@ -27,10 +26,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNCameraPackage(),
-            new RCTMGLPackage(),
-            new ReactNativeRabbitMqPackage(),
-            new RNSoundPackage()
+          new RNCameraPackage(),
+          new RCTMGLPackage(),
+          new ReactNativeRabbitMqPackage(),
+          new RNSoundPackage()
       );
     }
 
