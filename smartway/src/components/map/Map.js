@@ -27,7 +27,7 @@ export default class Map extends Component {
                   
                 },
 
-                error => console.err(error.message),
+                error => console.log(error.message),
                 { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
               );
           }).catch(err => {

@@ -28,7 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
           new RNCameraPackage(),
           new RCTMGLPackage(),
-          new ReactNativeRabbitMqPackage(),
           new RNSoundPackage()
       );
     }
