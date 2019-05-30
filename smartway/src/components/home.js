@@ -16,7 +16,7 @@ export default class Home extends Component {
         return (
             <ScrollView style={styles.container}>
                 <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => alert("Clicou no mapa! :D")}>
+                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Map')}>
                         <Image source={iconMap} style={styles.image} />
                     </TouchableOpacity>
                 </View>
