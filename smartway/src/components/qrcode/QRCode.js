@@ -3,13 +3,20 @@ import { View, Text, Linking, Dimensions, StyleSheet, TouchableOpacity
         } from "react-native";
 import ModalWebView from './ModalWebView'
 import QRCodeScanner from "react-native-qrcode-scanner";
+import api from '../../services/api';
 
 export default class QRCode extends Component {
+    
+    constructor(props) {
+        super(props);
+      }
+    
     static navigationOptions = {
        title: 'Leitor de QR Code',
     };
 
     state = {
+        apiTextLength: 66,
         modalVisible: false,
         success: null,
         url: '',
@@ -28,12 +35,19 @@ export default class QRCode extends Component {
     }
     
     onSuccess = (e) => {
-        Linking
-          .openURL(e.data)
-          .catch(err => console.error('An error occured', err));
+        const urlCod =  e.data
+        let codBusStation = urlCod.substring(this.state.apiTextLength)
+        this.props.navigation.navigate('BusLine', {codBusStation: codBusStation});
+        
+        // TODO: Validar valor de codBusStation.
+        // Se for qualquer outro link:
+        // Linking
+        //   .openURL(e.data)
+        //   .catch(err => console.error('An error occured', err));
       }
 
     render() {
+        
         return (
             <View style={styles.container}>
                 <QRCodeScanner

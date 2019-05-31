@@ -8,7 +8,7 @@ export default class BusLine extends Component {
     };
 
     state = {
-        docs: []
+        docs: [],
     };
 
     componentDidMount() {
@@ -16,17 +16,13 @@ export default class BusLine extends Component {
     }
     
     loadProducts = async () => { // async await é um padrão mais simples do ES8 pra trabalhar com promise
-        const response = await api.get('/4985'); // do final da url para frente
-        
+        const response = await api.get(this.props.navigation.getParam('codBusStation'));       
         const docs = response.data;
-
-        console.log("Lista")
-        console.log(docs);
 
         this.setState({docs});
     };
 
-    renderItem = ({ item }) => (  // () para retornar a função direto
+    renderItem = ({ item }) => (
         <View style={styles.productContainer}>
             <Text style={styles.productTitle}> {item.numero} </Text>
             <Text style={styles.productDescription}> {item.descricao} </Text>
@@ -41,15 +37,7 @@ export default class BusLine extends Component {
         const {navigate} = this.props.navigation;
         return (
             <View style={styles.container}>
-                <Button
-                title="Go to Jane's profile"
-                onPress={() => navigate('QRCode')}
-                />  
-                {/* <Text>Página Main: </Text>
-                {this.state.docs.map(product => {  //percorreu o array que a API retornou, por meio de um map
-                    return <Text key={product._id}>{product.title}</Text> // o id é pra garantir que tem chave única 
-                })} */}
-                <FlatList 
+            <FlatList 
                 contentContainerStyle={styles.list}
                 data={this.state.docs}
                
