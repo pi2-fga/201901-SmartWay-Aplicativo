@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, PermissionsAndroid, TouchableOpacity, Text, TextInput } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
-import Search from '../search/Search';
-import MapView from 'react-native-maps';
 
 MapboxGL.setAccessToken('pk.eyJ1IjoicmVuYXRhZnNvdXphIiwiYSI6ImNqdzE4d3VxdzBqZmk0NW1tbDFoNTh3ZW4ifQ.p6LguU-I7gCBsLiGVKph7A');
 
