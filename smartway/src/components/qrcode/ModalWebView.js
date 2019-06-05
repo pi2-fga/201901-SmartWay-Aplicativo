@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, View, WebView, Text, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import {Modal, View, Text, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
+import {WebView} from 'react-native-webview';
 import PropTypes from 'prop-types';
 
 const { width, height } = Dimensions.get("window");
