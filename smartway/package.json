@@ -9,10 +9,12 @@
   "dependencies": {
     "@mapbox/react-native-mapbox-gl": "https://github.com/nitaliano/react-native-mapbox-gl/tarball/master",
     "axios": "^0.18.0",
+    "firebase": "^6.1.1",
     "react": "16.8.3",
     "react-native": "0.59.5",
     "react-native-awesome-alerts": "^1.2.0",
     "react-native-camera": "^2.9.0",
+    "react-native-firebase": "^5.4.2",
     "react-native-navigation": "^2.18.5",
     "react-native-qrcode-scanner": "^1.2.1",
     "react-native-sound": "^0.10.12",
