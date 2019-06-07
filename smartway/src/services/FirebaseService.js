@@ -16,30 +16,3 @@ export const getItems = (path) => {
          });
          return docs;    
 }
-
-// export default class FirebaseService {
-//     static getDataList = (nodePath, callback, size = 10) => {
-//         console.log("node");
-//         console.log(nodePath);
-        
-//         let query = firebaseDatabase.ref(nodePath).limitToLast(size);
-//         query.on(nodePath, dataSnapshot => {
-//             let items = [];
-//             dataSnapshot.forEach(childSnapshot => {
-//                 let item = childSnapshot.val();
-//                 ///item['key'] = childSnapshot.key;
-//                 items.push(item);
-//             });
-//             callback(items);
-//         });
-
-//         return query;
-//     };
-
-//     static addFavoriteBusLine =  (item) => {
-//         firebaseDatabase.ref('/linhasOnibus').push({
-//             favorito: item
-//         });
-//     }
-
-// }
