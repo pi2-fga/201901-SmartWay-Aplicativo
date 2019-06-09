@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
+import io from 'socket.io-client';
 import iconMap from '../assets/images/map.png';
 import iconQRCode from '../assets/images/qrleitor.png';
 import iconFavorite from '../assets/images/fav.png';
 import iconBattery from '../assets/images/bateria.png';
 import iconCrosswalk from '../assets/images/crosswalk.png';
 
-export default class Home extends Component { 
+export default class Home extends Component {
+    componentDidMount() {
+      this.socket = io('http://10.0.2.2:5000', {transports: ['websocket']});
+      this.socket.on('mobile', (message) => {
+        console.warn(message);
+      })
+    }
+
     static navigationOptions = {
         title: "SmartWay"
     };
