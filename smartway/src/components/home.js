@@ -9,7 +9,8 @@ import iconCrosswalk from '../assets/images/crosswalk.png';
 
 export default class Home extends Component {
     componentDidMount() {
-      this.socket = io('http://10.0.2.2:5000', {transports: ['websocket']});
+      this.socket = io('http://18.228.137.154:5000', {transports: ['websocket']});
+      this.socket.on('connect', () => console.warn("Bengala conectada"))
       this.socket.on('mobile', (message) => {
         console.warn(message);
       })
