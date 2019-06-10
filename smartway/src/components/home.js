@@ -7,6 +7,7 @@ import iconQRCode from '../assets/images/qrleitor.png';
 import iconFavorite from '../assets/images/fav.png';
 import iconBattery from '../assets/images/bateria.png';
 import iconCrosswalk from '../assets/images/crosswalk.png';
+import iconSmartWay from '../assets/images/smartway.png';
 
 console.disableYellowBox = true;
 
@@ -92,7 +93,7 @@ export default class Home extends Component {
 
                 <View style={styles.containerIcon}>
                     <TouchableOpacity style={styles.icon} onPress={() => this.__toogleSmartWay()}>
-                        <Image source={iconQRCode} style={styles.image} />
+                        <Image source={iconSmartWay} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
