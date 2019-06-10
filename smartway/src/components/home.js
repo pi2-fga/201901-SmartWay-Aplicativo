@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import io from 'socket.io-client';
-import { feedback } from '../shared/utils';
+import { speak } from '../shared/utils';
 import iconMap from '../assets/images/map.png';
 import iconQRCode from '../assets/images/qrleitor.png';
 import iconFavorite from '../assets/images/fav.png';
 import iconBattery from '../assets/images/bateria.png';
 import iconCrosswalk from '../assets/images/crosswalk.png';
 
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 
 export default class Home extends Component {
     constructor(props) {
@@ -18,13 +18,13 @@ export default class Home extends Component {
       this.state = {
         run: true,
         object: false,
-        batery: 100
+        batery: "100"
       }
     }
 
     componentDidMount() {
       this.socket = io('http://18.228.137.154:5000', {transports: ['websocket']});
-      this.socket.on('connect', () => console.warn("Bengala Conectada"));
+      this.socket.on('connect', () => speak("Smartway Conectado"));
       this.socket.on('mobile', (message) => {
         let result = JSON.parse(message);
         this.setState({
@@ -39,21 +39,23 @@ export default class Home extends Component {
 
     __runFeedback() {
       if (this.state.run) {
-        feedback('object.mp3');
+        speak('Objeto detectado');
       }
     }
 
     __toogleSmartWay() {
-      this.setState({ run: !this.state.run });
-      if (this.state.run) {
-        console.warn('smartway-connected');
+      const connected = !this.state.run;
+      this.setState({ run: connected });
+
+      if (connected) {
+        speak("smartway conectado");
       } else {
-        console.warn('smartway-disconnected');
+        speak("smartway desconectado");
       }
     }
 
     __getBatery() {
-      console.warn(this.state.batery);
+      speak(this.state.batery + " porcento de bateria");
     }
 
     static navigationOptions = {

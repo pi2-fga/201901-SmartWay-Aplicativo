@@ -3,7 +3,8 @@ include ':react-native-sound'
 project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
 include ':react-native-camera'
 project(':react-native-camera').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-camera/android')
-
+include ':react-native-android-speech'
+project(':react-native-android-speech').projectDir = new File(settingsDir, '../node_modules/react-native-android-speech')
 include ':mapbox-react-native-mapbox-gl'
 project(':mapbox-react-native-mapbox-gl').projectDir = new File(rootProject.projectDir, '../node_modules/@mapbox/react-native-mapbox-gl/android/rctmgl')
 

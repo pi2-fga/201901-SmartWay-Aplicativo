@@ -2,6 +2,7 @@ package com.smartway;
 
 import android.app.Application;
 
+import com.mihir.react.tts.RCTTextToSpeechModule;
 import com.facebook.react.ReactApplication;
 import com.zmxv.RNSound.RNSoundPackage;
 import org.reactnative.camera.RNCameraPackage;
@@ -28,7 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
           new RNCameraPackage(),
           new RCTMGLPackage(),
-          new RNSoundPackage()
+          new RNSoundPackage(),
+          new RCTTextToSpeechModule()
       );
     }
 
