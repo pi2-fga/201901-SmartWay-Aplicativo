@@ -33,7 +33,7 @@ export default class Home extends Component {
 
       this.socket.on('mobile_batery', message => {
         if (this.state.run) {
-          this.setState({ batery: str(message) });
+          this.setState({ batery: message });
         }
       })
     }
