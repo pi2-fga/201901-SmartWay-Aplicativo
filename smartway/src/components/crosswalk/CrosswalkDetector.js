@@ -43,7 +43,6 @@ class CrosswalkDetector extends Component {
 
   detectedFeedback(data) {
     const { navigate } = this.props.navigation;
-    console.warn(data.message);
     if (data.result) {
       speak("Faixa de pedestre detectada");
     } else {
@@ -55,7 +54,7 @@ class CrosswalkDetector extends Component {
 
   failConnection(error) {
     console.log(error);
-    speak("Servidor não conseguiu response, tente novamente mais tarde");
+    speak("Servidor não conseguiu responder, tente novamente mais tarde");
     this.setState({ showAlert: false })
   }
 
@@ -103,11 +102,15 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 15,
     paddingHorizontal: 20,
+    width: "100%",
+    height: 100,
     alignSelf: "center",
     margin: 20
   },
   buttonText: {
-    fontSize: 14
+    fontSize: 30,
+    textAlign: 'center',
+    textAlignVertical: "center"
   }
 });
 
