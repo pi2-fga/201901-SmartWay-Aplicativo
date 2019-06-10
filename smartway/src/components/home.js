@@ -9,7 +9,7 @@ import iconBattery from '../assets/images/bateria.png';
 import iconCrosswalk from '../assets/images/crosswalk.png';
 import iconSmartWay from '../assets/images/smartway.png';
 
-console.disableYellowBox = true;
+// console.disableYellowBox = true;
 
 export default class Home extends Component {
     constructor(props) {
@@ -18,30 +18,24 @@ export default class Home extends Component {
 
       this.state = {
         run: true,
-        object: false,
-        batery: "100"
+        batery: ""
       }
     }
 
     componentDidMount() {
       this.socket = io('http://18.228.137.154:5000', {transports: ['websocket']});
       this.socket.on('connect', () => speak("Smartway Conectado"));
-      this.socket.on('mobile', (message) => {
-        let result = JSON.parse(message);
-        this.setState({
-          object: result.object,
-          batery: result.batery
-        });
-
-        this.__runFeedback();
-        this.setState({ object: false });
+      this.socket.on('mobile_alert', () => {
+        if (this.state.run) {
+          speak('Objeto detectado');
+        }
       })
-    }
 
-    __runFeedback() {
-      if (this.state.run) {
-        speak('Objeto detectado');
-      }
+      this.socket.on('mobile_batery', message => {
+        if (this.state.run) {
+          this.setState({ batery: str(message) });
+        }
+      })
     }
 
     __toogleSmartWay() {
@@ -56,7 +50,11 @@ export default class Home extends Component {
     }
 
     __getBatery() {
-      speak(this.state.batery + " porcento de bateria");
+      if (this.state.batery) {
+        speak(this.state.batery + " porcento de bateria");
+      } else {
+        speak("Bateria não conectada")
+      }
     }
 
     static navigationOptions = {
