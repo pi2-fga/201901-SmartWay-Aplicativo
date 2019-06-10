@@ -9,7 +9,7 @@ import iconBattery from '../assets/images/bateria.png';
 import iconCrosswalk from '../assets/images/crosswalk.png';
 import iconSmartWay from '../assets/images/smartway.png';
 
-// console.disableYellowBox = true;
+console.disableYellowBox = true;
 
 export default class Home extends Component {
     constructor(props) {
