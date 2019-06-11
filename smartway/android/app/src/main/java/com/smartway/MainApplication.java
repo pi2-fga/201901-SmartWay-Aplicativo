@@ -30,7 +30,6 @@ public class MainApplication extends Application implements ReactApplication {
           new MapsPackage(),
           new RNCameraPackage(),
           new RNSoundPackage(),
-          new RCTMGLPackage(),
           new RCTTextToSpeechModule()
       );
     }
