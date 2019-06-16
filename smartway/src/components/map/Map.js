@@ -1,78 +1,109 @@
-import React, {Component} from 'react';
-import { View, StyleSheet, PermissionsAndroid } from 'react-native';
-import MapboxGL from '@mapbox/react-native-mapbox-gl';
+import React, { Component, Fragment } from 'react'
+import { Text, View, PermissionsAndroid } from 'react-native'
+import MapView,  { Marker } from 'react-native-maps'
+import Search from './Search'
+import Directions from './Directions'
 import { speak } from '../../shared/utils';
 
-MapboxGL.setAccessToken('pk.eyJ1IjoicmVuYXRhZnNvdXphIiwiYSI6ImNqdzE4d3VxdzBqZmk0NW1tbDFoNTh3ZW4ifQ.p6LguU-I7gCBsLiGVKph7A');
+const PERMISSIONS = [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+                      PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION];
 
 export default class Map extends Component {
-    constructor(props) {
-      super(props);
-      this.props = props;
-      speak("Mapa conectado, insira a rota de destino")
+  static navigationOptions = {
+    headerTransparent: true
+  };
 
-      this.state = {
-        position: '',
-        longitude: 0,
-        latitude: 0
+  constructor(props) {
+    super(props);
+    this.props = props;
+    speak("Mapa conectado, insira a rota de destino")
+
+    this.state = {
+      region: null, 
+      destination: null,
+      duration: null,
+      location: null,
+      latitudeOrigin: 0,
+      longitudeOrigin: 0
+    };
+  }
+
+  async componentDidMount() {
+    PermissionsAndroid.requestMultiple(PERMISSIONS,)
+      .then(granted => {
+        navigator.geolocation.getCurrentPosition(
+          position => {  
+            let region = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+              latitudeDelta: 0.134,
+              longitudeDelta: 0.143
+            } 
+            this.setState({region});
+          },
+          error => console.log(error.message),
+          { enableHighAccuracy: true, timeout: 60000, maximumAge: 1000 }
+        );
+    }).catch(err => {
+      reject(err);
+    });
+  }
+
+  handleLocationSelected = (data, { geometry }) => {
+       const {
+      location: { lat: latitude, lng: longitude }} = geometry; //Desestruturacao do JavaScript. Só usa o que importa do objeto
+
+    this.setState({
+      destination: {
+        latitude,
+        longitude,
+        title: data.structured_formatting.main_text
       }
-    }
+    });
 
-    componentDidMount() {
-      
-      PermissionsAndroid.requestMultiple(
-                  [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-                  PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION],
-                ).then(granted => {
-              
-              navigator.geolocation.getCurrentPosition(
-                position => {
-                                    
-                  this.setState(state => ({ latitude: position.coords.latitude }));
-                  this.setState(state => ({ longitude: position.coords.longitude }));
-                  
-                },
+  };
 
-                error => console.log(error.message),
-                { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-              );
-          }).catch(err => {
-              reject(err);
-          });
-      }
+
+
+  render() {
+    const { region, destination } = this.state;
    
     
-      render() {
-        
-        return (        
-            <MapboxGL.MapView
-            centerCoordinate={[this.state.longitude, this.state.latitude]}
-            style={styles.container}
-            showUserLocation={true}
-            styleURL={MapboxGL.StyleURL.Dark}
+    return (
+      <View style={{flex: 1}}>
+        {region && 
+          
+          <MapView
+            style={{flex: 1}}
+            region = {region}
+            showsUserLocation={true}
+            loadingEnabled={true}
+            ref={el => (this.mapView = el)} 
           >
-          </MapboxGL.MapView>
-        );
-      }
-}
+            {destination && (
+            <Fragment>
+              <Directions
+                  origin={region}
+                  destination={destination}
+                  onReady={() => {}}
+                />
+              <MapView.Marker
+              coordinate={destination}
+              title={destination.title}
+              description={destination.description}
+              /> 
+            </Fragment>
+            )}
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    annotationContainer: {
-      width: 30,
-      height: 30,
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: 'white',
-      borderRadius: 15,
-    },
-    annotationFill: {
-      width: 30,
-      height: 30,
-      borderRadius: 15,
-      backgroundColor: '#7159C1',
-      transform: [{ scale: 0.8 }],
-    }
-  });
+          
+          </MapView>        
+        }
+        
+
+        {region && 
+          <Search onLocationSelected={this.handleLocationSelected} />
+        }
+      </View>
+    )
+  }
+}
