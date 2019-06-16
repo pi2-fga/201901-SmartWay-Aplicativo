@@ -1,15 +1,21 @@
 import React, {Component} from 'react';
 import { View, StyleSheet, PermissionsAndroid } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
+import { speak } from '../../shared/utils';
 
 MapboxGL.setAccessToken('pk.eyJ1IjoicmVuYXRhZnNvdXphIiwiYSI6ImNqdzE4d3VxdzBqZmk0NW1tbDFoNTh3ZW4ifQ.p6LguU-I7gCBsLiGVKph7A');
 
 export default class Map extends Component {
+    constructor(props) {
+      super(props);
+      this.props = props;
+      speak("Mapa conectado, insira a rota de destino")
 
-    state = {
-      position: '',
-      longitude: 0,
-      latitude: 0
+      this.state = {
+        position: '',
+        longitude: 0,
+        latitude: 0
+      }
     }
 
     componentDidMount() {

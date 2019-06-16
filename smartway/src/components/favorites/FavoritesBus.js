@@ -1,8 +1,14 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet, Button} from 'react-native';
 import api from '../../services/api';
+import { speak } from '../../shared/utils';
 
-export default class FavoritesBusLines extends Component { 
+export default class FavoritesBusLines extends Component {
+    constructor(props) {
+      super(props);
+      speak("Lista com as linhas de ônibus favoritas")
+    }
+
     static navigationOptions = {
         title: "Linhas de ônibus favoritas"
     };
@@ -27,7 +33,12 @@ export default class FavoritesBusLines extends Component {
             <Text style={styles.productTitle}> {item.numero} </Text>
             <Text style={styles.productDescription}> {item.descricao} </Text>
 
-            <TouchableOpacity style={styles.productButton} onPress={() => {}}>
+            <TouchableOpacity accessible={true}
+                style={styles.productButton}
+                onPress={() => {}}
+                accessibilityLabel="Acessar"
+                accessibilityHint="Cálcular rota"
+                accessibilityRole="button">
                 <Text style={styles.productButtonText}>Acessar</Text>
             </TouchableOpacity>
         </View>

@@ -6,11 +6,11 @@ import { crosswalkDetectionAPI } from './api';
 import { loadingAlert } from '../../shared/alerts';
 
 class CrosswalkDetector extends Component {
-
   constructor(props) {
     super(props);
     this.props = props;
     this.state = { showAlert: false }
+    speak("Camera ativada, tire foto da faixa com o botão no final da tela")
   }
 
   takePicture = async () => {
@@ -69,8 +69,13 @@ class CrosswalkDetector extends Component {
             flashMode={RNCamera.Constants.FlashMode.off}
             captureAudio={false}
           />
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity onPress={this.takePicture} style={styles.capture}>
+          <View style={styles.buttonContainer} accessible={true}>
+            <TouchableOpacity
+              onPress={this.takePicture}
+              style={styles.capture}
+              accessibilityLabel="Capturar faixa"
+              accessibilityHint="Detecção de faixa de pedestre"
+              accessibilityRole="button">
               <Text style={styles.buttonText}>Capturar</Text>
             </TouchableOpacity>
           </View>

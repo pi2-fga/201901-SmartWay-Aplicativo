@@ -4,8 +4,14 @@ import iconHouse from '../../assets/images/house-icon.png';
 import iconWork from '../../assets/images/office-icon.png';
 import iconAdd from '../../assets/images/plus-icon.png';
 import iconBus from '../../assets/images/icone_bus.png';
+import { speak } from '../../shared/utils';
 
-export default class Favorites extends Component { 
+export default class Favorites extends Component {
+    constructor(props) {
+      super(props);
+      speak("Menu com os itens de favoritos.")
+    }
+
     static navigationOptions = {
         title: "Favoritos"
     };
@@ -14,26 +20,46 @@ export default class Favorites extends Component {
         const {navigate} = this.props.navigation;
         return (
             <ScrollView style={styles.container}>
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Home')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Home')}
+                        accessibilityLabel="Casa"
+                        accessibilityHint="Rotas de casa"
+                        accessibilityRole="button">
                         <Image source={iconHouse} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Home')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Home')}
+                        accessibilityLabel="Trabalho"
+                        accessibilityHint="Rota de trabalho"
+                        accessibilityRole="button">
                         <Image source={iconWork} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Home')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Home')}
+                        accessibilityLabel="Hospital"
+                        accessibilityHint="Rota de hospital"
+                        accessibilityRole="button">
                         <Image source={iconAdd} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('FavoritesBusLines')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('FavoritesBusLines')}
+                        accessibilityLabel="Ônibus"
+                        accessibilityHint="Rotas para ponto de ônibus"
+                        accessibilityRole="button">
                         <Image source={iconBus} style={styles.image} />
                     </TouchableOpacity>
                 </View>

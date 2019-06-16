@@ -65,44 +65,74 @@ export default class Home extends Component {
         const {navigate} = this.props.navigation;
         return (
             <ScrollView style={styles.container}>
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Map')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Map')}
+                        accessibilityLabel="Mapa"
+                        accessibilityHint="Mapa para inserção de rota"
+                        accessibilityRole="button">
                         <Image source={iconMap} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Favorites')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Favorites')}
+                         accessibilityLabel="Favoritos"
+                         accessibilityHint="Entra no menu de favoritos"
+                         accessibilityRole="button">
                         <Image source={iconFavorite} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('QRCode')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('QRCode')}
+                        accessibilityLabel="QRCode"
+                        accessibilityHint="Lista os pontos de ônibus"
+                        accessibilityRole="button">
                         <Image source={iconQRCode} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => this.__getBatery()}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => this.__getBatery()}
+                        accessibilityLabel="Bateria"
+                        accessibilityHint="Verifica o nível de bateria"
+                        accessibilityRole="button">
                         <Image source={iconBattery} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => this.__toogleSmartWay()}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => this.__toogleSmartWay()}
+                        accessibilityLabel="SmartWay"
+                        accessibilityHint="Ativa ou desativa a bengala smartway"
+                        accessibilityRole="button">
                         <Image source={iconSmartWay} style={styles.image} />
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.containerIcon}>
-                    <TouchableOpacity style={styles.icon} onPress={() => navigate('Crosswalk')}>
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Crosswalk')}
+                        accessibilityLabel="Faixa de pedestre"
+                        accessibilityHint="Detecção de faixa de pedestre"
+                        accessibilityRole="button">
                         <Image source={iconCrosswalk} style={styles.image} />
                     </TouchableOpacity>
                 </View>
             </ScrollView>
         );
-    }            
+    }
 }
 
 const styles = StyleSheet.create({
