@@ -4,29 +4,31 @@ import { View, Text, Linking, Dimensions, StyleSheet, TouchableOpacity
 import ModalWebView from './ModalWebView'
 import QRCodeScanner from "react-native-qrcode-scanner";
 import api from '../../services/api';
+import { speak } from '../../shared/utils'; 
 
-export default class QRCode extends Component {
-    
-    constructor(props) {
-        super(props);
-      }
-    
+export default class QRCode extends Component {    
     static navigationOptions = {
        title: 'Leitor de QR Code',
     };
 
-    state = {
+    constructor(props) {
+      super(props);
+      this.props = props;
+      speak("Camera ativada, posicione a camera no QRCode, se precisar peça ajuda.");
+
+      this.state = {
         apiTextLength: 66,
         modalVisible: false,
         success: null,
         url: '',
       };
+    }
 
     openLink = () => {
-    Linking.openURL(this.state.url).catch(err =>
-        alert("An error occured", err)
-    );
-    this.setState({ success: false })
+      Linking.openURL(this.state.url).catch(err =>
+          alert("An error occured", err)
+      );
+      this.setState({ success: false })
     };
 
     handleButton = () => {

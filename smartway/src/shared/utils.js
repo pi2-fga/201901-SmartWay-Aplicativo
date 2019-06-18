@@ -1,4 +1,5 @@
 import Sound from 'react-native-sound';
+import tts from 'react-native-android-speech';
 
 export function isEmpty(obj) {
   for(var key in obj) {
@@ -27,4 +28,16 @@ export function feedback(sound) {
 
   feedback.setVolume(1);
   feedback.release();
+}
+
+export function speak(text) {
+  tts.speak({
+    text: text,
+    pitch: 1,
+    language: 'pt-BR'
+  }).then(isSpeaking => {
+    console.log(isSpeaking);
+  }).catch(error => {
+    console.log(error);
+  })
 }

@@ -7,21 +7,23 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mapbox/react-native-mapbox-gl": "https://github.com/nitaliano/react-native-mapbox-gl/tarball/master",
     "axios": "^0.18.0",
     "firebase": "^6.1.1",
-    "mapbox": "^1.0.0-beta10",
     "react": "16.8.3",
     "react-native": "0.59.5",
+    "react-native-android-speech": "0.0.6",
     "react-native-awesome-alerts": "^1.2.0",
     "react-native-camera": "^2.9.0",
     "react-native-firebase": "^5.4.2",
+    "react-native-google-places-autocomplete": "^1.3.9",
+    "react-native-maps": "^0.24.2",
+    "react-native-maps-directions": "^1.7.0",
     "react-native-navigation": "^2.18.5",
     "react-native-qrcode-scanner": "^1.2.1",
     "react-native-sound": "^0.10.12",
     "react-native-webview": "^5.10.0",
     "react-navigation": "2.18.3",
-    "url": "^0.11.0"
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",

@@ -43,7 +43,11 @@
 		30D39601CEB9421CB5BB77E7 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A42D695240E4897AE3C7B8B /* libRNSound.a */; };
 		A229967656AA4A35BAB07776 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D77FF77D5FB1485B92751249 /* libReactNativeNavigation.a */; };
 		7FC1DFFB63104FF5A3A327C5 /* ReactNativeNavigationTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 895A5EA5A39C44C68992D0CA /* ReactNativeNavigationTests.xctest */; };
+<<<<<<< HEAD
 		B984A57275AD4E03B7120C86 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA2E636D2D94F70A7409B87 /* libRNFirebase.a */; };
+=======
+		F32E34FBA25A43B3A311FEC5 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA131DF077AC46DEB4DB6748 /* libAirMaps.a */; };
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -358,8 +362,13 @@
 		A04A1EECDE0B4619B8188F43 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeNavigation.xcodeproj"; path = "../node_modules/react-native-navigation/lib/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		D77FF77D5FB1485B92751249 /* libReactNativeNavigation.a */ = {isa = PBXFileReference; name = "libReactNativeNavigation.a"; path = "libReactNativeNavigation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		895A5EA5A39C44C68992D0CA /* ReactNativeNavigationTests.xctest */ = {isa = PBXFileReference; name = "ReactNativeNavigationTests.xctest"; path = "ReactNativeNavigationTests.xctest"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.cfbundle; explicitFileType = undefined; includeInIndex = 0; };
+<<<<<<< HEAD
 		F1F40DF436954CFEA96C90C0 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		CFA2E636D2D94F70A7409B87 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+=======
+		5AB8CC305FB84C41B231CB18 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; name = "AirMaps.xcodeproj"; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		EA131DF077AC46DEB4DB6748 /* libAirMaps.a */ = {isa = PBXFileReference; name = "libAirMaps.a"; path = "libAirMaps.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,7 +401,11 @@
 				30D39601CEB9421CB5BB77E7 /* libRNSound.a in Frameworks */,
 				A229967656AA4A35BAB07776 /* libReactNativeNavigation.a in Frameworks */,
 				7FC1DFFB63104FF5A3A327C5 /* ReactNativeNavigationTests.xctest in Resources */,
+<<<<<<< HEAD
 				B984A57275AD4E03B7120C86 /* libRNFirebase.a in Frameworks */,
+=======
+				F32E34FBA25A43B3A311FEC5 /* libAirMaps.a in Frameworks */,
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +598,11 @@
 				316A709F249545799E94F23C /* RNCamera.xcodeproj */,
 				0A2AC57E4C8C4A0E9DD46797 /* RNSound.xcodeproj */,
 				A04A1EECDE0B4619B8188F43 /* ReactNativeNavigation.xcodeproj */,
+<<<<<<< HEAD
 				F1F40DF436954CFEA96C90C0 /* RNFirebase.xcodeproj */,
+=======
+				5AB8CC305FB84C41B231CB18 /* AirMaps.xcodeproj */,
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1225,7 +1242,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Debug;
@@ -1259,7 +1280,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Release;
@@ -1285,7 +1310,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Debug;
@@ -1310,7 +1339,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Release;
@@ -1352,7 +1385,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Debug;
@@ -1394,7 +1431,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Release;
@@ -1435,7 +1476,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Debug;
@@ -1476,7 +1521,11 @@
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 					"$(SRCROOT)/../node_modules/react-native-navigation/lib/ios/**",
+<<<<<<< HEAD
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
+=======
+					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
+>>>>>>> 8251bd37dd96f0aa0df06335c4adf84c3765bb0c
 				);
 			};
 			name = Release;
