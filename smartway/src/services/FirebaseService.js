@@ -16,3 +16,9 @@ export const getItems = (path) => {
          });
          return docs;    
 }
+
+export const addFavorite =  (item) => {
+    firebaseDatabase.ref('/favoritos').push({
+        favorito: item
+    });
+} 
