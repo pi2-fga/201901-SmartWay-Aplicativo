@@ -8,6 +8,7 @@ import Favorites from './components/favorites/Favorites';
 import Map from './components/map/Map';
 import BusLine from './components/busLine/BusLine';
 import FavoritesBusLines from './components/favorites/FavoritesBus';
+import Voice from './components/map/Voice';
 
 const RoutesNavigation = createStackNavigator({
     Home: Home,
@@ -16,7 +17,8 @@ const RoutesNavigation = createStackNavigator({
     Favorites: Favorites,
     Map: Map,
     BusLine: BusLine,
-    FavoritesBusLines: FavoritesBusLines
+    FavoritesBusLines: FavoritesBusLines,
+    Voice: Voice
 });
 
 export default class Routes extends Component {
@@ -26,4 +28,3 @@ export default class Routes extends Component {
         );
     }
 }
-  

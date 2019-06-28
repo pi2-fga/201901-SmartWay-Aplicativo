@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View, PermissionsAndroid } from 'react-native'
+import { Text, View, PermissionsAndroid, Button } from 'react-native'
 import MapView,  { Marker } from 'react-native-maps'
 import Search from './Search'
 import Directions from './Directions'
 import { speak } from '../../shared/utils';
+import Voice from './Voice'
 
 const PERMISSIONS = [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION];
@@ -67,7 +68,7 @@ export default class Map extends Component {
 
   render() {
     const { region, destination } = this.state;
-   
+    const {navigate} = this.props.navigation;
     
     return (
       <View style={{flex: 1}}>
@@ -102,6 +103,16 @@ export default class Map extends Component {
 
         {region && 
           <Search onLocationSelected={this.handleLocationSelected} />
+        }
+
+        {region && 
+          <Button
+                  title="Navegar"
+                  onPress={() => navigate('Voice')}
+                  accessibilityLabel="Direções"
+                  accessibilityHint="Direções a se percorrer"
+                  accessibilityRole="button"
+                />
         }
       </View>
     )
