@@ -18,9 +18,14 @@ export default class SubmitFavoriteLocation extends Component {
       static navigationOptions = ({navigation}) => {
         const destination = navigation.getParam('destination');
         const placeTitle = navigation.getParam('place');
+        const showSearch = navigation.getParam('showSearch');
         
         return {
-            headerTitle: <FormFavorites destination={destination} place={placeTitle} navigation={navigation} />,
+            headerTitle:<FormFavorites 
+                        showSearch= {showSearch} 
+                        destination={destination} 
+                        place={placeTitle} 
+                        navigation={navigation} />,
             headerStyle: {height: 170 }
         }
       };

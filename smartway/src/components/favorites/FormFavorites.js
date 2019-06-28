@@ -11,9 +11,13 @@ export default class FormFavorites extends Component {
     };
   }
 
+   componentDidMount() {
+    console.log("===============RESPONSE=========");
+    console.log(this.props)
+  }
+
   onSubmit = (place, destination) => {
-      addFavorite({region: destination, place: place});
-    //   alert("Local adicionado aos favoritos!");
+    addFavorite({region: destination, place: place});
     speak("Local adicionado aos favoritos!");
     this.props.navigation.navigate('Favorites');
   }
@@ -21,7 +25,6 @@ export default class FormFavorites extends Component {
   render() {
     const {destination} = this.props;
     const {place} = this.props;
-    const {navigation} = this.props;
     
     return (
       <ScrollView style={styles.container}>

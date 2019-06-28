@@ -8,6 +8,11 @@ import iconLocation from '../../assets/images/Location-map-pin-marker-512.png';
 import { speak } from '../../shared/utils';
 import {firebaseDatabase} from '../../utils/firebase.js';
 
+/*TODO: Refatorar o percorrer do objeto favorito.  Colocar em formato geral, com a key. 
+        Implementar tbm o método de edição do firebase
+        https://github.com/oliveirasWell/react-firebase-step-by-step/blob/master/src/components/Add/Add.js
+        */
+
 export default class Favorites extends Component {
     constructor(props) {
       super(props);
@@ -24,26 +29,24 @@ export default class Favorites extends Component {
         let itemsRef = firebaseDatabase.ref('/favoritos');
         
         itemsRef.on('value', (snapshot) => {
-            let data = snapshot.val();
-            let favorites = Object.values(data);
+            let favorites = [];
+            snapshot.forEach(childSnapshot => {
+                let item = childSnapshot.val();
+                item['key'] = childSnapshot.key;
+                favorites.push(item);
+            });
             this.setState({favorites});
                 
             const homeFilter = favorites.filter((item) => item.favorito.place == 'Casa');
-            this.setState({home: homeFilter});
-
             const workFilter = favorites.filter((item) => item.favorito.place == 'Trabalho');
-            this.setState({work: workFilter});
-
-
             const otherFilter = favorites.filter((item) => item.favorito.place != 'Trabalho' && item.favorito.place != 'Casa');
-            this.setState({others: otherFilter});
-
-            console.log("------------------Outroos-----------")
-            console.log(workFilter)
-
+            
+            this.setState({home: homeFilter});           
+            this.setState({work: workFilter});
+            this.setState({others: otherFilter});      
         });
+    } 
 
-    }     
     static navigationOptions = {
         title: "Favoritos"
     };
@@ -62,14 +65,13 @@ export default class Favorites extends Component {
                             <Image source={iconLocation} style={styles.image} />
                         </TouchableOpacity>
                     </View>
-
             </View>
     );
 
     handleNavigation = (obj, place) => {
         console.log("========Trabalho========")
         console.log(obj)
-        if(!obj) {
+        if(obj == false) {
             this.props.navigation.navigate('AddFavoriteLocation', {place: place});
         } else {
             this.props.navigation.navigate('FavoriteDirection', {destination: obj[0].favorito.region, place: place});

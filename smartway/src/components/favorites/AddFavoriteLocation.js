@@ -17,15 +17,20 @@ export default class AddFavoriteLocation extends Component {
       duration: null,
       location: null,
       latitudeOrigin: 0,
-      longitudeOrigin: 0,      
+      longitudeOrigin: 0,
+      edit: false,      
     };
   }
  
+  componentDidMount() {
+      if ((this.props.navigation.getParam("edit")) == true) {
+          
+      }
+  }    
 
   handleLocationSelected = (data, { geometry }) => {
     const {
    location: { lat: latitude, lng: longitude }} = geometry; //Desestruturacao do JavaScript. Só usa o que importa do objeto
-
    
     let destination = {
         latitude: latitude,
