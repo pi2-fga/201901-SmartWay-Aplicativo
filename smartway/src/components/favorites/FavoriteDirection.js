@@ -8,40 +8,40 @@ const PERMISSIONS = [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
 
 export default class FavoriteDirection extends Component {
     static navigationOptions = ({navigation}) => {
-        const destination = navigation.getParam('destination');
-        const place = navigation.getParam('place');
-        const key = navigation.getParam('key');
-        const favorite = navigation.getParam('favorite');
-
+    const item = navigation.getParam('item');
+    
+    
+    console.log("========FAVORITO EM FAVORITE DIRECTION ANTES DE PASSAR PRO SEARCH==========")
+    console.log(item)
         return {
             headerTitle:            
                 <View style={styles.containerSubmitButton}>
                     <TouchableOpacity style={styles.submitButton}
                     onPressIn={() => navigation.navigate('SearchFavoriteLocation', 
                                                 {edit: true,
-                                                destination: destination,
-                                                place: place,
+                                                item: item,
+                                                destination: item.favorito.region,
+                                                place: item.favorito.place,
                                                 showSearch: true,
-                                                key: key})}>
+                                                })}>
                         <Text style={styles.submitText}>Editar localização</Text>
                     </TouchableOpacity>
                 </View>,
             headerStyle: {height: 60 }
         }
-      };
+    
+    };
 
     constructor(props) {
         super(props);
         this.props = props;
         speak("Mapa conectado! Deseja editar a localização? Aperte o botão na barra superior");
-        const favorito = this.props.navigation.getParam('favorito');
+        const item = this.props.navigation.getParam('item');
         this.state = {
             currentRegion: null,
-            favorito,
+            item,
             isMapReady: false,
         }
-        console.log("===OIOIOI===")
-        console.log(this.state.favorito)
     }
 
     async componentDidMount() {
@@ -77,7 +77,7 @@ export default class FavoriteDirection extends Component {
         return (
             <MapKit  
             region={this.state.currentRegion} 
-            destination={this.state.favorito.region}
+            destination={this.state.item.favorito.region}
             showsUserLocation={true}
             showSearch={false}
             onLayout={this.onMapLayout}

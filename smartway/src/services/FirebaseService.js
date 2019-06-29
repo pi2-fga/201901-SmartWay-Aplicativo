@@ -18,9 +18,7 @@ export const getItems = (path) => {
 }
 
 export const addFavorite =  (item) => {
-    firebaseDatabase.ref('/favoritos').push({
-        favorito: item
-    });
+    firebaseDatabase.ref('/favoritos').push({item});
 } 
 
 export const updateData = (id, node, obj) => {

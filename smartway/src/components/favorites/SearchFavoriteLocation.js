@@ -7,6 +7,7 @@ import { speak } from '../../shared/utils';
     Descrição:
     Endereço:  
 TODO: Verificar speak no didMount
+TODO: BUG: lugar tá undefined na edição de endereço e é isso ái.
 */
 
 
@@ -23,10 +24,12 @@ export default class SearchFavoriteLocation extends Component {
     super(props);
     this.props = props;
     const edit = this.props.navigation.getParam('edit');
-    const place =  this.props.navigation.getParam('place');
+    const item = this.props.navigation.getParam('item');
+    const place = this.props.navigation.getParam('place')
+      
     
     if(edit != undefined) {
-        speak("Deseja editar o endereço de " + place + "? Qual o endereço?");
+        speak("Deseja editar o endereço de " + item.favorito.place + "? Qual o endereço?");
     } else {
         speak("Deseja adicionar o endereço de " + place + "? Qual o endereço?");
     }
@@ -38,7 +41,8 @@ export default class SearchFavoriteLocation extends Component {
       location: null,
       latitudeOrigin: 0,
       longitudeOrigin: 0,
-      edit: edit,      
+      edit: edit,
+      item,      
     };
   }
  
@@ -64,15 +68,20 @@ export default class SearchFavoriteLocation extends Component {
     }
 
     let obj={};
-    if (this.props.navigation.getParam('key') != undefined) {
-        obj = {destination: destination, 
-               place: placeTitle, 
-               key: this.props.navigation.getParam('key')}   
-    } else {
-        obj = {destination: destination, place: placeTitle};
-             
+    console.log("========STATE FAVORITO EM SEARCH FAVORITE==========")
+    console.log(this.state.item)
+    if(this.state.item == undefined) {
+        obj = {favorito:
+            {region: destination, 
+            place: placeTitle}
+          };
+    } else if ( this.state.item.key != undefined) {
+        obj = {favorito:
+                {region: destination, 
+                place: placeTitle}, 
+               key:this.state.item.key}   
     }
-    this.props.navigation.navigate('SubmitFavoriteLocation', obj);
+    this.props.navigation.navigate('SubmitFavoriteLocation', {item: obj});
   };
 
 

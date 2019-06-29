@@ -10,6 +10,7 @@ import {firebaseDatabase} from '../../utils/firebase.js';
 
 /**TODO: melhorar o banco. Criar tabelas para tipos... isso aí.
  * EnumTipoFavorito: em um arquivo separado.
+ * TODO: Arrumar questão da adição de um elemento. Tratar direitinho no Search.
 */
 
 
@@ -18,7 +19,7 @@ export default class MenuFavorites extends Component {
     constructor(props) {
       super(props);
       this.props = props;
-      speak("Menu com os itens de favoritos."); 
+      //speak("Menu com os itens de favoritos."); 
       this.state = {
         favorites: false,
         home:false,
@@ -28,6 +29,7 @@ export default class MenuFavorites extends Component {
     };
 
     componentDidMount() {
+        speak("Menu com os itens de favoritos."); 
         let itemsRef = firebaseDatabase.ref('/favoritos');
         
         itemsRef.on('value', (snapshot) => {
@@ -53,14 +55,13 @@ export default class MenuFavorites extends Component {
         title: "Favoritos"
     };
  
-    renderItem = ({ item }) => {
-
+    renderItem = ({ item }) => { 
           return ( 
             <View style={styles.productContainer}>
                 <View style={styles.containerIcon} accessible={true}>
                         <TouchableOpacity
                             style={styles.icon}
-                            onPress={() => this.props.navigation.navigate('FavoriteDirection',  item)}                      
+                            onPress={() => this.props.navigation.navigate('FavoriteDirection',  {item:item})}                      
                             accessibilityLabel="Lugar"
                             accessibilityHint="Lugar"
                             accessibilityRole="button">
@@ -72,12 +73,13 @@ export default class MenuFavorites extends Component {
         };
 
     handleNavigation = (obj, place) => {
-        console.log("==========OBJETO=========")
-        console.log(obj)
+        console.log("========FAVORITO CASA==========")
+        console.log(obj[0])
+
         if(obj == false) {
             this.props.navigation.navigate('SearchFavoriteLocation', {place: place});
         } else {
-            this.props.navigation.navigate('FavoriteDirection', obj[0]);
+            this.props.navigation.navigate('FavoriteDirection', {item:obj[0]});
         }
     }
     render() {

@@ -8,27 +8,32 @@ import { speak } from '../../shared/utils';
 export default class FormFavorites extends Component {
   constructor(props) {
     super(props);
+    
+    const item = this.props.navigation.getParam('item');
+    
+    console.log("=======FORM FAVORITO===========")
+    console.log(item)
+
     this.state = {
-        place: this.props.place,
+        place: item.favorito.place,
+        item
     };
   }
 
-  onSubmit = (destination, key) => {
-    if(key != undefined) {
-        updateData(key, 'favoritos', {favorito:{region: destination, place: this.state.place}})
+  onSubmit = () => {
+    if(this.state.item.key != undefined) {
+        updateData(this.state.item.key, 'favoritos', this.state.item)
         speak("Localização editada!");
     } 
     else {
-        addFavorite({region: destination, place: this.state.place});
+        addFavorite(this.state.item);
         speak("Local adicionado aos favoritos!");
     }  
     this.props.navigation.navigate('MenuFavorites');
   }
 
   render() {
-    const {destination} = this.props;
     const {showSearch} = this.props;
-    const key = this.props.navigation.getParam('key');
     
     return (
       <ScrollView style={styles.container}>
@@ -46,12 +51,12 @@ export default class FormFavorites extends Component {
             </View>
 
             <View>
-                <Text style={styles.descriptionLocation}>Descrição: {destination.title}</Text>
+                <Text style={styles.descriptionLocation}>Descrição: {this.state.item.favorito.region.title}</Text>
             </View>
 
             <View style={styles.containerSubmitButton}>
                 <TouchableOpacity style={styles.submitButton}
-                 onPressIn={() => this.onSubmit(destination, key)}>
+                 onPressIn={() => this.onSubmit()}>
                     <Text style={styles.submitText}>Salvar</Text>
                 </TouchableOpacity>
             </View>     
