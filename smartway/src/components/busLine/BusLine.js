@@ -47,9 +47,9 @@ export default class BusLine extends Component {
             <Text style={styles.productTitle}> {item.numero} </Text>
             <Text style={styles.productDescription}> {item.descricao} </Text>
 
-            <TouchableOpacity style={styles.productButton} onPress={() => {}}>
+            {/* <TouchableOpacity style={styles.productButton} onPress={() => {}}>
                 <Text style={styles.productButtonText}>Acessar</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     );
 
