@@ -12,7 +12,8 @@ export default class SubmitFavoriteLocation extends Component {
         console.log("====FAVORITO SUBMIT==============")
         console.log(item)
 
-        speak("Confirme o endereço de " + item.favorito.place);
+        speak("Confirme o endereço de " + item.favorito.place + "Descrição: " + item.favorito.region.title + 
+                "Endereço: " + item.favorito.description);
         this.state = {
             place: "Home",
             destination: "UM DESTINO",
@@ -41,9 +42,13 @@ export default class SubmitFavoriteLocation extends Component {
                         destination={item.favorito.region} 
                         place={placeTitle} 
                         navigation={navigation} />,
-            headerStyle: {height: 170 }
+            headerStyle: {height: 240 }
         }
       };
+
+      componentWillUnmount () {
+        speak("Buscar endereço para atualizar ou adicionar favorito");
+      }
 
       onMapLayout = () => {
         this.setState({ isMapReady: true });

@@ -17,8 +17,10 @@ export const getItems = (path) => {
          return docs;    
 }
 
-export const addFavorite =  (item) => {
-    firebaseDatabase.ref('/favoritos').push({item});
+export const addFavorite =  (favorito) => {
+    console.log("=== QUEM SERÁ SALVO??? =====")
+    console.log(favorito)
+    firebaseDatabase.ref('/favoritos').push({...favorito});
 } 
 
 export const updateData = (id, node, obj) => {

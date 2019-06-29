@@ -27,10 +27,21 @@ export default class FormFavorites extends Component {
     } 
     else {
         addFavorite(this.state.item);
-        speak("Local adicionado aos favoritos!");
-    }  
+        speak("Local adicionado aos favoritos!" + "Menu com os itens de favoritos!" );
+    }
+      
     this.props.navigation.navigate('MenuFavorites');
   }
+
+  alertConfirmation = () => {
+      speak("Deseja salvar localização favorita de "+ this.state.item.favorito.place +" para " + this.state.item.favorito.region.title + " com endereço em: "
+            + this.state.item.favorito.description)
+    const showAlert = () =>{
+       Alert.alert(
+          'Deseja salvar localização favorita?'
+       )
+    }
+    }  
 
   render() {
     const {showSearch} = this.props;
@@ -54,6 +65,10 @@ export default class FormFavorites extends Component {
                 <Text style={styles.descriptionLocation}>Descrição: {this.state.item.favorito.region.title}</Text>
             </View>
 
+            <View>
+                <Text style={styles.descriptionLocation}>Endereço: {this.state.item.favorito.description}</Text>
+            </View>
+
             <View style={styles.containerSubmitButton}>
                 <TouchableOpacity style={styles.submitButton}
                  onPressIn={() => this.onSubmit()}>
@@ -71,7 +86,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column', 
         backgroundColor: '#fff',
-        height:160        
+        height:225       
     },
 
     containerInput: {

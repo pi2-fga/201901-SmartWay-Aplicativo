@@ -8,6 +8,7 @@ import { speak } from '../../shared/utils';
     Endereço:  
 TODO: Verificar speak no didMount
 TODO: BUG: lugar tá undefined na edição de endereço e é isso ái.
+TODO: BUG: endereço de other???
 */
 
 
@@ -30,8 +31,10 @@ export default class SearchFavoriteLocation extends Component {
     
     if(edit != undefined) {
         speak("Deseja editar o endereço de " + item.favorito.place + "? Qual o endereço?");
-    } else {
+    } else if(place != "other"){
         speak("Deseja adicionar o endereço de " + place + "? Qual o endereço?");
+    } else {
+        speak("Deseja adicionar o endereço? Qual o endereço?");    
     }
 
     this.state = {
@@ -50,9 +53,16 @@ export default class SearchFavoriteLocation extends Component {
       if ((this.props.navigation.getParam("edit")) == true) {
           
       }
-  }    
+  } 
+  
+  componentWillUnmount () {
+    speak("Menu com itens de favoritos");
+  }
 
   handleLocationSelected = (data, { geometry }) => {
+    console.log("@@@@@@@@@@@@@@ DATA DESCRIPTION @@@@@@@@@@@@@@@@")
+    console.log(data.description)
+
     const {
    location: { lat: latitude, lng: longitude }} = geometry; //Desestruturacao do JavaScript. Só usa o que importa do objeto
    
@@ -73,13 +83,15 @@ export default class SearchFavoriteLocation extends Component {
     if(this.state.item == undefined) {
         obj = {favorito:
             {region: destination, 
-            place: placeTitle}
+            place: placeTitle,
+            description: data.description}
           };
     } else if ( this.state.item.key != undefined) {
         obj = {favorito:
                 {region: destination, 
                 place: placeTitle}, 
-               key:this.state.item.key}   
+                key:this.state.item.key,
+                description: data.description}   
     }
     this.props.navigation.navigate('SubmitFavoriteLocation', {item: obj});
   };

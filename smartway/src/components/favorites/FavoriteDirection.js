@@ -47,6 +47,10 @@ export default class FavoriteDirection extends Component {
     async componentDidMount() {
         this.getCurrentLocation();
     }
+
+    componentWillUnmount () {
+        speak("Menu com os itens de favoritos");
+      }
     
       getCurrentLocation() {
         PermissionsAndroid.requestMultiple(PERMISSIONS,)

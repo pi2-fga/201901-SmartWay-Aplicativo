@@ -10,7 +10,6 @@ import {firebaseDatabase} from '../../utils/firebase.js';
 
 /**TODO: melhorar o banco. Criar tabelas para tipos... isso aí.
  * EnumTipoFavorito: em um arquivo separado.
- * TODO: Arrumar questão da adição de um elemento. Tratar direitinho no Search.
 */
 
 
@@ -19,7 +18,6 @@ export default class MenuFavorites extends Component {
     constructor(props) {
       super(props);
       this.props = props;
-      //speak("Menu com os itens de favoritos."); 
       this.state = {
         favorites: false,
         home:false,
@@ -28,8 +26,11 @@ export default class MenuFavorites extends Component {
       };
     };
 
-    componentDidMount() {
+    componentWillMount() {
         speak("Menu com os itens de favoritos."); 
+    }
+
+    componentDidMount() {
         let itemsRef = firebaseDatabase.ref('/favoritos');
         
         itemsRef.on('value', (snapshot) => {
@@ -50,6 +51,8 @@ export default class MenuFavorites extends Component {
             this.setState({others: otherFilter});      
         });   
     } 
+
+    
 
     static navigationOptions = {
         title: "Favoritos"
