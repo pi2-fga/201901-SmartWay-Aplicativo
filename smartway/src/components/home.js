@@ -79,7 +79,7 @@ export default class Home extends Component {
                 <View style={styles.containerIcon} accessible={true}>
                     <TouchableOpacity
                         style={styles.icon}
-                        onPress={() => navigate('Favorites')}
+                        onPress={() => navigate('MenuFavorites')}
                          accessibilityLabel="Favoritos"
                          accessibilityHint="Entra no menu de favoritos"
                          accessibilityRole="button">
