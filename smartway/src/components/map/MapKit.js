@@ -16,9 +16,13 @@ export default class MapKit extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+    console.log("========MAPKIT PROPS==========")
+    console.log(this.props)
+    const {destination} = this.props;
+        
     this.state = {
-      region: null, 
-      destination: null,
+      region: null,
+      destination,
       duration: null,
       location: null,
       latitudeOrigin: 0,
@@ -55,18 +59,18 @@ export default class MapKit extends Component {
             loadingEnabled={true}
             ref={el => (this.mapView = el)}>
 
-              {destination && 
+              {this.state.destination && 
                   (
                     <Fragment>
                       <Directions
                           origin={region}
-                          destination={destination}
+                          destination={this.state.destination}
                           onReady={() => {}}
                         />
                       <MapView.Marker
-                      coordinate={destination}
-                      title={destination.title}
-                      description={destination.description}
+                      coordinate={this.state.destination}
+                      title={this.state.destination.title}
+                      description={this.state.destination.description}
                       /> 
                     </Fragment>
                   )
