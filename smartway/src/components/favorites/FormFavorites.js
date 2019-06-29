@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Text, FlatList, ScrollView } from 'react-native';
-import {addFavorite} from '../../services/FirebaseService';
+import {addFavorite, updateData} from '../../services/FirebaseService';
 import { speak } from '../../shared/utils';
+
+/*TODO: BLoquear ediçao do nome Casa e Trabalho */
 
 export default class FormFavorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        place: "Casa",
+        place: this.props.place,
     };
   }
 
-   componentDidMount() {
-    console.log("===============RESPONSE=========");
-    console.log(this.props)
-  }
-
-  onSubmit = (place, destination) => {
-    addFavorite({region: destination, place: place});
-    speak("Local adicionado aos favoritos!");
-    this.props.navigation.navigate('Favorites');
+  onSubmit = (destination, key) => {
+    if(key != undefined) {
+        updateData(key, 'favoritos', {favorito:{region: destination, place: this.state.place}})
+        speak("Localização editada!");
+    } 
+    else {
+        addFavorite({region: destination, place: this.state.place});
+        speak("Local adicionado aos favoritos!");
+    }  
+    this.props.navigation.navigate('MenuFavorites');
   }
 
   render() {
     const {destination} = this.props;
-    const {place} = this.props;
+    const {showSearch} = this.props;
+    const key = this.props.navigation.getParam('key');
     
     return (
       <ScrollView style={styles.container}>
@@ -37,7 +41,7 @@ export default class FormFavorites extends Component {
                 style={styles.textInput}
                 numberOfLines = {1}
                 onChangeText={(place) => this.setState({place})}
-                value={place}
+                value={this.state.place}
                 />
             </View>
 
@@ -47,7 +51,7 @@ export default class FormFavorites extends Component {
 
             <View style={styles.containerSubmitButton}>
                 <TouchableOpacity style={styles.submitButton}
-                 onPressIn={() => this.onSubmit(place, destination)}>
+                 onPressIn={() => this.onSubmit(destination, key)}>
                     <Text style={styles.submitText}>Salvar</Text>
                 </TouchableOpacity>
             </View>     

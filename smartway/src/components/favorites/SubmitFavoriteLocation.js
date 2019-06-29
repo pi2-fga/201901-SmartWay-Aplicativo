@@ -38,6 +38,7 @@ export default class SubmitFavoriteLocation extends Component {
 
   render() {
     const response = this.props.navigation.getParam('destination');
+    const showSearch = this.props.navigation.getParam('showSearch');  
     const region = {
         latitude: response.latitude,
         longitude: response.longitude,
@@ -55,7 +56,7 @@ export default class SubmitFavoriteLocation extends Component {
         region={region} 
         destination={destination}
         showsUserLocation={false}
-        showSearch={false}
+        showSearch={showSearch == true? true : false}
         onLayout={this.onMapLayout}    
         />
     );

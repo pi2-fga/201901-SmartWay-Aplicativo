@@ -22,3 +22,7 @@ export const addFavorite =  (item) => {
         favorito: item
     });
 } 
+
+export const updateData = (id, node, obj) => {
+    return firebaseDatabase.ref(node + '/' + id).set({...obj});
+};

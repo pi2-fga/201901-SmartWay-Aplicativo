@@ -8,14 +8,16 @@ import iconLocation from '../../assets/images/Location-map-pin-marker-512.png';
 import { speak } from '../../shared/utils';
 import {firebaseDatabase} from '../../utils/firebase.js';
 
-/*TODO: Refatorar o percorrer do objeto favorito.  Colocar em formato geral, com a key. 
-        Implementar tbm o método de edição do firebase
-        https://github.com/oliveirasWell/react-firebase-step-by-step/blob/master/src/components/Add/Add.js
-        */
+/**TODO: melhorar o banco. Criar tabelas para tipos... isso aí.
+ * EnumTipoFavorito: em um arquivo separado.
+*/
 
-export default class Favorites extends Component {
+
+
+export default class MenuFavorites extends Component {
     constructor(props) {
       super(props);
+      this.props = props;
       speak("Menu com os itens de favoritos."); 
       this.state = {
         favorites: false,
@@ -36,7 +38,7 @@ export default class Favorites extends Component {
                 favorites.push(item);
             });
             this.setState({favorites});
-                
+            
             const homeFilter = favorites.filter((item) => item.favorito.place == 'Casa');
             const workFilter = favorites.filter((item) => item.favorito.place == 'Trabalho');
             const otherFilter = favorites.filter((item) => item.favorito.place != 'Trabalho' && item.favorito.place != 'Casa');
@@ -44,21 +46,21 @@ export default class Favorites extends Component {
             this.setState({home: homeFilter});           
             this.setState({work: workFilter});
             this.setState({others: otherFilter});      
-        });
+        });   
     } 
 
     static navigationOptions = {
         title: "Favoritos"
     };
  
-    renderItem = ({ item }) => (
+    renderItem = ({ item }) => {
+
+          return ( 
             <View style={styles.productContainer}>
                 <View style={styles.containerIcon} accessible={true}>
                         <TouchableOpacity
                             style={styles.icon}
-                            onPress={() => navigate('FavoriteDirection', 
-                                                    {destination: item.favorito.region, 
-                                                    place: item.favorito.place})}
+                            onPress={() => this.props.navigation.navigate('FavoriteDirection',  item)}                      
                             accessibilityLabel="Lugar"
                             accessibilityHint="Lugar"
                             accessibilityRole="button">
@@ -66,15 +68,16 @@ export default class Favorites extends Component {
                         </TouchableOpacity>
                     </View>
             </View>
-    );
+          ) 
+        };
 
     handleNavigation = (obj, place) => {
-        console.log("========Trabalho========")
+        console.log("==========OBJETO=========")
         console.log(obj)
         if(obj == false) {
-            this.props.navigation.navigate('AddFavoriteLocation', {place: place});
+            this.props.navigation.navigate('SearchFavoriteLocation', {place: place});
         } else {
-            this.props.navigation.navigate('FavoriteDirection', {destination: obj[0].favorito.region, place: place});
+            this.props.navigation.navigate('FavoriteDirection', obj[0]);
         }
     }
     render() {
@@ -116,7 +119,7 @@ export default class Favorites extends Component {
                 <View style={styles.containerIcon} accessible={true}>
                     <TouchableOpacity
                         style={styles.icon}
-                        onPress={() => navigate('AddFavoriteLocation', {place: 'other'})}
+                        onPress={() => navigate('SearchFavoriteLocation', {place: 'other'})}
                         accessibilityLabel="Hospital"
                         accessibilityHint="Rota de hospital"
                         accessibilityRole="button">

@@ -10,16 +10,19 @@ export default class FavoriteDirection extends Component {
     static navigationOptions = ({navigation}) => {
         const destination = navigation.getParam('destination');
         const place = navigation.getParam('place');
+        const key = navigation.getParam('key');
+        const favorite = navigation.getParam('favorite');
 
         return {
             headerTitle:            
                 <View style={styles.containerSubmitButton}>
                     <TouchableOpacity style={styles.submitButton}
-                    onPressIn={() => navigation.navigate('SubmitFavoriteLocation', 
+                    onPressIn={() => navigation.navigate('SearchFavoriteLocation', 
                                                 {edit: true,
                                                 destination: destination,
                                                 place: place,
-                                                showSearch: true})}>
+                                                showSearch: true,
+                                                key: key})}>
                         <Text style={styles.submitText}>Editar localização</Text>
                     </TouchableOpacity>
                 </View>,
@@ -27,32 +30,36 @@ export default class FavoriteDirection extends Component {
         }
       };
 
-      constructor(props) {
+    constructor(props) {
         super(props);
         this.props = props;
-        speak("Mapa conectado!")
+        speak("Mapa conectado! Deseja editar a localização? Aperte o botão na barra superior");
+        const favorito = this.props.navigation.getParam('favorito');
         this.state = {
-            region: null,
+            currentRegion: null,
+            favorito,
             isMapReady: false,
-        }    
-      }
+        }
+        console.log("===OIOIOI===")
+        console.log(this.state.favorito)
+    }
 
     async componentDidMount() {
         this.getCurrentLocation();
-      }
+    }
     
       getCurrentLocation() {
         PermissionsAndroid.requestMultiple(PERMISSIONS,)
           .then(granted => {
             navigator.geolocation.getCurrentPosition(
               position => {  
-                let region = {
+                let currentRegion = {
                   latitude: position.coords.latitude,
                   longitude: position.coords.longitude,
                   latitudeDelta: 0.534,
                   longitudeDelta: 0.543
                 } 
-                this.setState({region});
+                this.setState({currentRegion});
               },
               error => console.log(error.message),
               { enableHighAccuracy: true, timeout: 60000, maximumAge: 1000 }
@@ -69,8 +76,8 @@ export default class FavoriteDirection extends Component {
     render() {
         return (
             <MapKit  
-            region={this.state.region} 
-            destination={this.props.navigation.getParam('destination')}
+            region={this.state.currentRegion} 
+            destination={this.state.favorito.region}
             showsUserLocation={true}
             showSearch={false}
             onLayout={this.onMapLayout}

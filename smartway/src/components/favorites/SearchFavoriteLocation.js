@@ -3,14 +3,34 @@ import { View, TextInput, StyleSheet, TouchableOpacity, Text, FlatList, ScrollVi
 import Search from '../map/Search';
 import { speak } from '../../shared/utils';
 
-export default class AddFavoriteLocation extends Component {
-  static navigationOptions = {
-      headerTitle: "Adicionar endereço"
+/*TODO: Add descrição do endereço do local mesmo. 
+    Descrição:
+    Endereço:  
+TODO: Verificar speak no didMount
+*/
+
+
+export default class SearchFavoriteLocation extends Component {
+  static navigationOptions = ({navigation}) => {
+      const edit = navigation.getParam('edit');
+      
+      return {
+          headerTitle: edit == true? "Edição do endereço"  : "Adicionar endereço"
+      }
   };
 
   constructor(props) {
     super(props);
-    speak("Qual o endereço?");
+    this.props = props;
+    const edit = this.props.navigation.getParam('edit');
+    const place =  this.props.navigation.getParam('place');
+    
+    if(edit != undefined) {
+        speak("Deseja editar o endereço de " + place + "? Qual o endereço?");
+    } else {
+        speak("Deseja adicionar o endereço de " + place + "? Qual o endereço?");
+    }
+
     this.state = {
       region: null, 
       destination: null,
@@ -18,7 +38,7 @@ export default class AddFavoriteLocation extends Component {
       location: null,
       latitudeOrigin: 0,
       longitudeOrigin: 0,
-      edit: false,      
+      edit: edit,      
     };
   }
  
@@ -39,12 +59,20 @@ export default class AddFavoriteLocation extends Component {
     }
 
     let placeTitle = this.props.navigation.getParam('place');
-   
     if(placeTitle == "other") {
         placeTitle = destination.title;
     }
 
-    this.props.navigation.navigate('SubmitFavoriteLocation', {destination: destination, place: placeTitle});
+    let obj={};
+    if (this.props.navigation.getParam('key') != undefined) {
+        obj = {destination: destination, 
+               place: placeTitle, 
+               key: this.props.navigation.getParam('key')}   
+    } else {
+        obj = {destination: destination, place: placeTitle};
+             
+    }
+    this.props.navigation.navigate('SubmitFavoriteLocation', obj);
   };
 
 
@@ -58,7 +86,6 @@ export default class AddFavoriteLocation extends Component {
             textPlaceholder={"Qual o endereço?"}
             onLocationSelected={this.handleLocationSelected}
             />
-  
     </View>  
     );
   }
