@@ -16,8 +16,6 @@ export default class MapKit extends Component {
   constructor(props) {
     super(props);
     this.props = props;
-    console.log("========MAPKIT PROPS==========")
-    console.log(this.props)
     const {destination} = this.props;
         
     this.state = {
@@ -65,7 +63,19 @@ export default class MapKit extends Component {
                       <Directions
                           origin={region}
                           destination={this.state.destination}
-                          onReady={() => {}}
+                          onReady={result => {
+                            console.log("===Result routes===")
+                            console.log(result.coordinates[0])
+                            this.mapView.fitToCoordinates(result.coordinates, {
+                              edgePadding: {
+                                right: 50,
+                                left: 50,
+                                top: 50,
+                                bottom: 50,
+
+                              }
+                            });
+                            }}
                         />
                       <MapView.Marker
                       coordinate={this.state.destination}

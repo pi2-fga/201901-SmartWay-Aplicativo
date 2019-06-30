@@ -17,6 +17,9 @@ export default class Search extends Component {
             placeholder={textPlaceholder}
             placeholderTextColor="#333"
             onPress={onLocationSelected}
+            // onPress={(data, details) => { 
+            //     console.log("===DETAILS===")
+            //     console.log(details)}}
             query={{
                 key: "AIzaSyCMgW3rWewz7xBmpiqH0mTwFSZgnPF9Yn8",
                 language: "pt"
