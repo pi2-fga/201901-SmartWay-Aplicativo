@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View, PermissionsAndroid } from 'react-native'
+import { Text, View, PermissionsAndroid, Button } from 'react-native'
 import MapView,  { Marker } from 'react-native-maps'
 import Search from './Search'
 import Directions from './Directions'
 import { speak } from '../../shared/utils';
 import MapKit from './MapKit';
+import Voice from './Voice';
 
 const PERMISSIONS = [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION];
@@ -57,14 +58,16 @@ export default class Map extends Component {
 
 
   render() {
-    const { region } = this.state;
-
+    const { region} = this.state;
+    const {navigate} = this.props.navigation;
+    
     return (
       <MapKit
-        region={region}
-        showSearch={true}
-        showsUserLocation={true}
+      region={region}
+      showSearch={true}
+      showsUserLocation={true}
+      navigate={navigate}
       />
-    )
+    )        
   }
 }

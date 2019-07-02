@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View, PermissionsAndroid } from 'react-native'
+import { Text, View, Button, PermissionsAndroid } from 'react-native'
 import MapView,  { Marker } from 'react-native-maps'
 import Search from './Search'
 import Directions from './Directions'
@@ -41,10 +41,18 @@ export default class MapKit extends Component {
     });
   };
 
+  formatString() {
+    var string = this.state.titleDestination;
+
+    var novaString = string.replace(/ /g,"+")
+    this.setState({titleDestination:novaString})
+  };
+
   render() {
     const { region, destination } = this.props;
     const { showSearch } = this.props;
     const { showsUserLocation} = this.props;
+    const { navigate } = this.props;
 
     return (
       <View style={{flex: 1}}>
@@ -93,6 +101,16 @@ export default class MapKit extends Component {
           <Search
           textPlaceholder={"Para onde?"} 
           onLocationSelected={this.handleLocationSelected} />
+        }
+
+        {region && this.state.destination &&
+          <Button
+                  title="Navegar"
+                  onPress={() => navigate('Voice', {titleDestination:this.state.destination.title, region})}
+                  accessibilityLabel="Direções"
+                  accessibilityHint="Direções a se percorrer"
+                  accessibilityRole="button"
+                />
         }
       </View>
     )

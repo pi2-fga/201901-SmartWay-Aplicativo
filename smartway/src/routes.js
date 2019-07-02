@@ -11,6 +11,7 @@ import FavoritesBusLines from './components/favorites/FavoritesBus';
 import SearchFavoriteLocation from './components/favorites/SearchFavoriteLocation';
 import SubmitFavoriteLocation from './components/favorites/SubmitFavoriteLocation';
 import FavoriteDirection from './components/favorites/FavoriteDirection';
+import Voice from './components/map/Voice';
 
 const RoutesNavigation = createStackNavigator({
     Home: Home,
@@ -22,7 +23,8 @@ const RoutesNavigation = createStackNavigator({
     FavoritesBusLines: FavoritesBusLines,
     SearchFavoriteLocation: SearchFavoriteLocation,
     SubmitFavoriteLocation: SubmitFavoriteLocation,
-    FavoriteDirection: FavoriteDirection
+    FavoriteDirection: FavoriteDirection,
+    Voice: Voice
 });
 
 export default class Routes extends Component {
@@ -32,4 +34,3 @@ export default class Routes extends Component {
         );
     }
 }
-  
