@@ -8,6 +8,7 @@ import iconFavorite from '../assets/images/fav.png';
 import iconBattery from '../assets/images/bateria.png';
 import iconCrosswalk from '../assets/images/crosswalk.png';
 import iconSmartWay from '../assets/images/smartway.png';
+import manual from '../assets/images/manual.jpeg';
 
 console.disableYellowBox = true;
 
@@ -130,6 +131,17 @@ export default class Home extends Component {
                         <Image source={iconCrosswalk} style={styles.image} />
                     </TouchableOpacity>
                 </View>
+
+                <View style={styles.containerIcon} accessible={true}>
+                    <TouchableOpacity
+                        style={styles.icon}
+                        onPress={() => navigate('Manual')}
+                        accessibilityLabel="Manual do Usuário"
+                        accessibilityHint="Entra no manual de usuário"
+                        accessibilityRole="button">
+                        <Image source={manual} style={styles.image} />
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
         );
     }
@@ -138,15 +150,15 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column', 
-        backgroundColor: '#fff',        
+        flexDirection: 'column',
+        backgroundColor: '#fff',
     },
 
     containerIcon: {
         // flex: 1,
         // backgroundColor: 'transparent',
         // padding: 20
-        
+
     },
 
     icon: {
@@ -158,11 +170,9 @@ const styles = StyleSheet.create({
     },
 
     image: {
-        width: 90, 
+        width: 90,
         height: 90,
     },
 
 
-});    
-
-
+});
