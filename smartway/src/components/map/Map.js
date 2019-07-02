@@ -66,6 +66,7 @@ export default class Map extends Component {
       region={region}
       showSearch={true}
       showsUserLocation={true}
+      navigate={navigate}
       />
     )        
   }

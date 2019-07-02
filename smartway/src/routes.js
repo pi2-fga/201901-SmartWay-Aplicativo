@@ -23,7 +23,7 @@ const RoutesNavigation = createStackNavigator({
     FavoritesBusLines: FavoritesBusLines,
     SearchFavoriteLocation: SearchFavoriteLocation,
     SubmitFavoriteLocation: SubmitFavoriteLocation,
-    FavoriteDirection: FavoriteDirection
+    FavoriteDirection: FavoriteDirection,
     Voice: Voice
 });
 
