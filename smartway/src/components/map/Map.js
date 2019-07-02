@@ -5,7 +5,8 @@ import Search from './Search'
 import Directions from './Directions'
 import { speak } from '../../shared/utils';
 import MapKit from './MapKit';
-import Voice from './Voice';
+import Voice from './Voice'
+
 
 const PERMISSIONS = [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION];
@@ -21,7 +22,7 @@ export default class Map extends Component {
     speak("Mapa conectado, insira a rota de destino")
 
     this.state = {
-      region: null, 
+      region: null,
       destination: null,
       duration: null,
       location: null,
@@ -39,13 +40,13 @@ export default class Map extends Component {
     PermissionsAndroid.requestMultiple(PERMISSIONS,)
       .then(granted => {
         navigator.geolocation.getCurrentPosition(
-          position => {  
+          position => {
             let region = {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude,
               latitudeDelta: 0.534,
               longitudeDelta: 0.543
-            } 
+            }
             speak("Mapa conectado, insira a rota de destino")
             this.setState({region});
           },
@@ -62,9 +63,9 @@ export default class Map extends Component {
   };
 
   render() {
-    const { region} = this.state;
-    const {navigate} = this.props.navigation;
-    
+    const { region } = this.state;
+    const { navigate } = this.props.navigation;
+
     return (
       <MapKit
       region={region}
@@ -73,6 +74,6 @@ export default class Map extends Component {
       navigate={navigate}
       onLayout={this.onMapLayout}
       />
-    )        
+    )
   }
 }

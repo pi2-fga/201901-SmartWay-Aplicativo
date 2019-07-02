@@ -12,6 +12,11 @@ import SearchFavoriteLocation from './components/favorites/SearchFavoriteLocatio
 import SubmitFavoriteLocation from './components/favorites/SubmitFavoriteLocation';
 import FavoriteDirection from './components/favorites/FavoriteDirection';
 import Voice from './components/map/Voice';
+import Manual from './components/manual/Manual';
+import Produto from './components/manual/Produto';
+import Peças from './components/manual/Peças';
+import ComoUsar from './components/manual/ComoUsar';
+import Restriçoes from './components/manual/Restriçoes';
 
 const RoutesNavigation = createStackNavigator({
     Home: Home,
@@ -24,7 +29,12 @@ const RoutesNavigation = createStackNavigator({
     SearchFavoriteLocation: SearchFavoriteLocation,
     SubmitFavoriteLocation: SubmitFavoriteLocation,
     FavoriteDirection: FavoriteDirection,
-    Voice: Voice
+    Voice: Voice,
+    Manual: Manual,
+    Produto: Produto,
+    Peças: Peças,
+    ComoUsar: ComoUsar,
+    Restriçoes: Restriçoes
 });
 
 export default class Routes extends Component {
