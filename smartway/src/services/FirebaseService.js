@@ -18,8 +18,6 @@ export const getItems = (path) => {
 }
 
 export const addFavorite =  (favorito) => {
-    console.log("=== QUEM SERÁ SALVO??? =====")
-    console.log(favorito)
     firebaseDatabase.ref('/favoritos').push({...favorito});
 } 
 
