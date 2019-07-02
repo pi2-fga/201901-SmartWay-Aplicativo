@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "667965128748",
+    "firebase_url": "https://smartwayapp-1558651212202.firebaseio.com",
+    "project_id": "smartwayapp-1558651212202",
+    "storage_bucket": "smartwayapp-1558651212202.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667965128748:android:67062a94bd1d6271",
+        "android_client_info": {
+          "package_name": "com.smartway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "667965128748-lod6a97vh53cmevsjgnto7kpera25guq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMgW3rWewz7xBmpiqH0mTwFSZgnPF9Yn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667965128748-lod6a97vh53cmevsjgnto7kpera25guq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
