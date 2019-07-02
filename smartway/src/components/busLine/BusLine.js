@@ -3,36 +3,25 @@ import {View, Text, FlatList, TouchableOpacity, StyleSheet, Button} from 'react-
 import api from '../../services/api';
 import {addItem} from '../../services/FirebaseService.js';
 import {firebaseDatabase} from '../../utils/firebase.js';
+import { speak } from '../../shared/utils';
 
 export default class BusLine extends Component { 
     static navigationOptions = {
         title: "Linhas de ônibus"
     };
 
+    constructor(props) {
+        super(props);
+        this.props = props;
+        speak("Toque na tela para ouvir qual o número e descrição dos ônibus que passam nesta parada");
+    }
+
     state = {
         docs: [],
     };
 
     componentDidMount() {
-        let itemsRef = firebaseDatabase.ref('/linhasOnibus');
-        
-        itemsRef.on('value', (snapshot) => {
-            let data = snapshot.val();
-            let docs = Object.values(data);
-            this.setState({docs});
-         });
-
-
-        // let objeto = {
-        //                 descricao: "Teste",
-        //                 numero: 15
-        //              }
-        
-        // addItem(objeto);
-
-
-        //FirebaseService.getDataList('linhasOnibus', dataIn => this.setState({docs: dataIn}), 10);
-        //this.loadProducts();
+        this.loadProducts();
     }
     
     loadProducts = async () => { // async await é um padrão mais simples do ES8 pra trabalhar com promise
@@ -43,13 +32,14 @@ export default class BusLine extends Component {
     };
 
     renderItem = ({ item }) => (
-        <View style={styles.productContainer}>
+        <View style={styles.productContainer}
+            accessible={true}
+            accessibilityLabel={item.numero}
+            accessibilityHint={item.descricao}
+        >
             <Text style={styles.productTitle}> {item.numero} </Text>
             <Text style={styles.productDescription}> {item.descricao} </Text>
 
-            {/* <TouchableOpacity style={styles.productButton} onPress={() => {}}>
-                <Text style={styles.productButtonText}>Acessar</Text>
-            </TouchableOpacity> */}
         </View>
     );
 
@@ -60,7 +50,7 @@ export default class BusLine extends Component {
             <FlatList 
                 contentContainerStyle={styles.list}
                 data={this.state.docs}
-               
+                
                 renderItem={this.renderItem}  //função para renderizar cada item. Ele vai escrever um método pra isso this.renderItem
                 />
             </View>
