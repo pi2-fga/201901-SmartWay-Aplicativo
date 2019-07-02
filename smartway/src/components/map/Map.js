@@ -47,6 +47,7 @@ export default class Map extends Component {
               latitudeDelta: 0.534,
               longitudeDelta: 0.543
             }
+            speak("Mapa conectado, insira a rota de destino")
             this.setState({region});
           },
           error => console.log(error.message),
@@ -57,6 +58,9 @@ export default class Map extends Component {
     });
   }
 
+  onMapLayout = () => {
+    speak("Mapa conectado, insira a rota de destino")
+  };
 
   render() {
     const { region } = this.state;
@@ -68,6 +72,7 @@ export default class Map extends Component {
       showSearch={true}
       showsUserLocation={true}
       navigate={navigate}
+      onLayout={this.onMapLayout}
       />
     )
   }

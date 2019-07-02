@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text, View, Button, PermissionsAndroid } from 'react-native'
+import { Text, View, Button, PermissionsAndroid, ActivityIndicator, StyleSheet } from 'react-native'
 import MapView,  { Marker } from 'react-native-maps'
 import Search from './Search'
 import Directions from './Directions'
@@ -24,7 +24,8 @@ export default class MapKit extends Component {
       duration: null,
       location: null,
       latitudeOrigin: 0,
-      longitudeOrigin: 0
+      longitudeOrigin: 0,
+      isLoading:true,
     };
   }
 
@@ -48,6 +49,10 @@ export default class MapKit extends Component {
     this.setState({titleDestination:novaString})
   };
 
+  onMapLayout = () => {
+    this.setState({ isLoading: false });
+  };
+
   render() {
     const { region, destination } = this.props;
     const { showSearch } = this.props;
@@ -56,6 +61,12 @@ export default class MapKit extends Component {
 
     return (
       <View style={{flex: 1}}>
+        { this.state.isLoading &&
+          <View style={[styles.container, styles.horizontal]}>
+          <ActivityIndicator size="large" color="#333" />
+        </View>
+        }
+
         {region && 
           
           <MapView
@@ -63,7 +74,8 @@ export default class MapKit extends Component {
             region = {region}
             showsUserLocation={showsUserLocation}
             loadingEnabled={true}
-            ref={el => (this.mapView = el)}>
+            ref={el => (this.mapView = el)}
+            onLayout={this.onMapLayout} >
 
               {this.state.destination && 
                   (
@@ -116,3 +128,15 @@ export default class MapKit extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10
+  }
+}) 
