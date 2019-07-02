@@ -4,7 +4,8 @@ import MapView,  { Marker } from 'react-native-maps'
 import Search from './Search'
 import Directions from './Directions'
 import { speak } from '../../shared/utils';
-import Voice from './Voice'
+import MapKit from './MapKit';
+import Voice from './Voice';
 
 const PERMISSIONS = [PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
                       PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION];
@@ -30,6 +31,11 @@ export default class Map extends Component {
   }
 
   async componentDidMount() {
+    this.getCurrentLocation();
+
+  }
+
+  getCurrentLocation() {
     PermissionsAndroid.requestMultiple(PERMISSIONS,)
       .then(granted => {
         navigator.geolocation.getCurrentPosition(
@@ -37,8 +43,8 @@ export default class Map extends Component {
             let region = {
               latitude: position.coords.latitude,
               longitude: position.coords.longitude,
-              latitudeDelta: 0.134,
-              longitudeDelta: 0.143
+              latitudeDelta: 0.534,
+              longitudeDelta: 0.543
             } 
             this.setState({region});
           },
@@ -50,71 +56,17 @@ export default class Map extends Component {
     });
   }
 
-  handleLocationSelected = (data, { geometry }) => {
-       const {
-      location: { lat: latitude, lng: longitude }} = geometry; //Desestruturacao do JavaScript. Só usa o que importa do objeto
-
-    this.setState({
-      destination: {
-        latitude,
-        longitude,
-        title: data.structured_formatting.main_text
-      }
-    });
-
-  };
-
-
 
   render() {
-    const { region, destination } = this.state;
+    const { region} = this.state;
     const {navigate} = this.props.navigation;
     
     return (
-      <View style={{flex: 1}}>
-        {region && 
-          
-          <MapView
-            style={{flex: 1}}
-            region = {region}
-            showsUserLocation={true}
-            loadingEnabled={true}
-            ref={el => (this.mapView = el)} 
-          >
-            {destination && (
-            <Fragment>
-              <Directions
-                  origin={region}
-                  destination={destination}
-                  onReady={() => {}}
-                />
-              <MapView.Marker
-              coordinate={destination}
-              title={destination.title}
-              description={destination.description}
-              /> 
-            </Fragment>
-            )}
-
-          
-          </MapView>        
-        }
-        
-
-        {region && 
-          <Search onLocationSelected={this.handleLocationSelected} />
-        }
-
-        {region && 
-          <Button
-                  title="Navegar"
-                  onPress={() => navigate('Voice')}
-                  accessibilityLabel="Direções"
-                  accessibilityHint="Direções a se percorrer"
-                  accessibilityRole="button"
-                />
-        }
-      </View>
-    )
+      <MapKit
+      region={region}
+      showSearch={true}
+      showsUserLocation={true}
+      />
+    )        
   }
 }

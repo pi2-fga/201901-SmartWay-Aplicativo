@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet, Button} from 'react-native';
 import api from '../../services/api';
+import {addItem} from '../../services/FirebaseService.js';
+import {firebaseDatabase} from '../../utils/firebase.js';
 
 export default class BusLine extends Component { 
     static navigationOptions = {
@@ -12,7 +14,25 @@ export default class BusLine extends Component {
     };
 
     componentDidMount() {
-        this.loadProducts();
+        let itemsRef = firebaseDatabase.ref('/linhasOnibus');
+        
+        itemsRef.on('value', (snapshot) => {
+            let data = snapshot.val();
+            let docs = Object.values(data);
+            this.setState({docs});
+         });
+
+
+        // let objeto = {
+        //                 descricao: "Teste",
+        //                 numero: 15
+        //              }
+        
+        // addItem(objeto);
+
+
+        //FirebaseService.getDataList('linhasOnibus', dataIn => this.setState({docs: dataIn}), 10);
+        //this.loadProducts();
     }
     
     loadProducts = async () => { // async await é um padrão mais simples do ES8 pra trabalhar com promise
@@ -27,9 +47,9 @@ export default class BusLine extends Component {
             <Text style={styles.productTitle}> {item.numero} </Text>
             <Text style={styles.productDescription}> {item.descricao} </Text>
 
-            <TouchableOpacity style={styles.productButton} onPress={() => {}}>
+            {/* <TouchableOpacity style={styles.productButton} onPress={() => {}}>
                 <Text style={styles.productButtonText}>Acessar</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     );
 

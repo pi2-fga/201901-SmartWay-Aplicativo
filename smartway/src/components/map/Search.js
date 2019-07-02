@@ -10,12 +10,16 @@ export default class Search extends Component {
     render() {
         const { onLocationSelected } = this.props; //Do mapa para onLocationSelected
         const { searchFocused } = this.state;
-        
+        const { textPlaceholder } = this.props;
+
         return (
             <GooglePlacesAutocomplete 
-            placeholder="Para onde?"
+            placeholder={textPlaceholder}
             placeholderTextColor="#333"
             onPress={onLocationSelected}
+            // onPress={(data, details) => { 
+            //     console.log("===DETAILS===")
+            //     console.log(details)}}
             query={{
                 key: "AIzaSyCMgW3rWewz7xBmpiqH0mTwFSZgnPF9Yn8",
                 language: "pt"
