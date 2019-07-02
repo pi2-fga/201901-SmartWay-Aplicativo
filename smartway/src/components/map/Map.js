@@ -60,19 +60,14 @@ export default class Map extends Component {
 
   render() {
     const { region } = this.state;
+    const { navigate } = this.props.navigation;
 
     return (
       <MapKit
-        region={region}
-        showSearch={true}
-        showsUserLocation={true}
-      />
-      <Button
-        title="Navegar"
-        onPress={() => navigate('Voice')}
-        accessibilityLabel="Direções"
-        accessibilityHint="Direções a se percorrer"
-        accessibilityRole="button"
+      region={region}
+      showSearch={true}
+      showsUserLocation={true}
+      navigate={navigate}
       />
     )
   }
