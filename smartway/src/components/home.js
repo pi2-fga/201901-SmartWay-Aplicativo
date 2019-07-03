@@ -34,7 +34,11 @@ export default class Home extends Component {
 
       this.socket.on('mobile_batery', message => {
         if (this.state.run) {
-          this.setState({ batery: message });
+          if (message == '3') {
+            this.setState({ batery: "Bateria em nível crítico." });
+          } else if (message == '4') {
+            this.setState({ batery: "Bateria está carregada." });
+          }
         }
       })
     }
@@ -52,7 +56,7 @@ export default class Home extends Component {
 
     __getBatery() {
       if (this.state.batery) {
-        speak(this.state.batery + " porcento de bateria");
+        speak(this.state.batery);
       } else {
         speak("Bateria não conectada")
       }
