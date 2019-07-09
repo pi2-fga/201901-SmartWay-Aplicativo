@@ -78,12 +78,15 @@ export default class FavoriteDirection extends Component {
     };  
 
     render() {
+        const {navigate} = this.props.navigation;
+        
         return (
             <MapKit  
             region={this.state.currentRegion} 
             destination={this.state.item.favorito.region}
             showsUserLocation={true}
             showSearch={false}
+            navigate={navigate}
             onLayout={this.onMapLayout}
             />
         )
