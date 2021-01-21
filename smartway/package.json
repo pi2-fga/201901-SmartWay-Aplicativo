@@ -23,7 +23,7 @@
     "react-native-sound": "^0.10.12",
     "react-native-webview": "^5.10.0",
     "react-navigation": "2.18.3",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
